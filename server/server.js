@@ -27,7 +27,14 @@ app.use("/api/orders", orderRoute);
 // This tells Express to serve the static files (like CSS, JS, images)
 // from the 'dist' folder inside your 'client' folder.
 const __dirname1 = path.resolve();
-app.use(express.static(path.join(__dirname1, "/client/dist")));
+
+// Serve static files from client/dist (one level up)
+app.use(express.static(path.join(__dirname1, "../client/dist")));
+
+// Catch-all route (React Router)
+app.get("*", (req, res) => {
+  res.sendFile(path.resolve(__dirname1, "../client/dist/index.html"));
+});
 
 // This is a catch-all route. For any request that doesn't match an API route,
 // it will send back the main index.html file from your frontend.
