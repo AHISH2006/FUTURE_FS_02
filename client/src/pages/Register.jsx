@@ -1,73 +1,125 @@
-// src/pages/Profile.jsx
-import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-import { useAuth } from "../context/AuthContext";
+// src/pages/Register.jsx
+import { useState } from "react";
+import { useNavigate, Link } from "react-router-dom";
 import Background from "../components/Background";
-import axios from "axios";
 
-function Profile() {
+export default function Register() {
   const navigate = useNavigate();
-  const { user, login } = useAuth();
-  const [formData, setFormData] = useState({ name: "", mobile: "" });
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    password: "",
+    confirmPassword: "",
+  });
   const [message, setMessage] = useState("");
 
-  useEffect(() => {
-    if (user) {
-      setFormData({ name: user.name, mobile: user.mobile || "" });
-    } else {
-      navigate("/login");
-    }
-  }, [user, navigate]);
-
-  const handleChange = (e) => {
+  const handleChange = (e) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
 
-  const handleSave = async (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    setMessage("");
+
+    if (formData.password !== formData.confirmPassword) {
+      setMessage("Passwords do not match!");
+      return;
+    }
+
     try {
-      const res = await axios.put(`http://localhost:5000/api/users/${user.id}`, {
-        name: formData.name,
-        mobile: formData.mobile,
+      const res = await fetch("http://localhost:5000/api/auth/signup", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          password: formData.password,
+        }),
       });
 
-      // To update the context everywhere, we can re-trigger the login logic
-      // This is a simple way to refresh the user state globally
-      const updatedUser = { ...user, ...res.data };
-      localStorage.setItem("user", JSON.stringify(updatedUser));
-      await login(user.email, null, true); // Special flag to bypass password check in context
+      const data = await res.json();
 
-      setMessage("Profile updated successfully!");
-      setTimeout(() => navigate("/account"), 1500);
+      if (!res.ok) {
+        setMessage(data.msg || "Signup failed!");
+      } else {
+        setMessage("Signup successful! Redirecting to login...");
+        setTimeout(() => navigate("/login"), 1500);
+      }
     } catch (err) {
-      setMessage("Failed to update profile.");
-      console.error("Error updating profile:", err);
+      console.error(err);
+      setMessage("Server error. Please try again.");
     }
   };
 
   return (
-    <div className="relative min-h-screen w-full flex items-center justify-center p-4">
-      <div className="absolute inset-0 z-0"><Background /></div>
-      <div className="relative z-10 w-full max-w-lg p-6 bg-gray-900/60 backdrop-blur-md rounded-2xl shadow-lg border border-purple-500/30">
-        <h1 className="text-3xl font-bold text-center text-purple-400 mb-6">Edit Your Profile</h1>
-        {message && <p className="text-center text-green-400 mb-4">{message}</p>}
-        <form onSubmit={handleSave} className="space-y-6">
-          <div>
-            <label className="block mb-2 font-semibold text-gray-300">Full Name</label>
-            <input type="text" name="name" value={formData.name} onChange={handleChange} className="w-full p-3 bg-gray-800 border border-gray-700 rounded-lg"/>
-          </div>
-          <div>
-            <label className="block mb-2 font-semibold text-gray-300">Mobile Number</label>
-            <input type="text" name="mobile" value={formData.mobile} onChange={handleChange} className="w-full p-3 bg-gray-800 border border-gray-700 rounded-lg"/>
-          </div>
-          <div className="flex gap-4 pt-4">
-            <button type="button" onClick={() => navigate("/account")} className="flex-1 py-3 bg-gray-600 rounded-lg font-semibold hover:bg-gray-700">Back</button>
-            <button type="submit" className="flex-1 py-3 bg-purple-600 rounded-lg font-semibold hover:bg-purple-700">Save Changes</button>
-          </div>
-        </form>
+    <div className="flex justify-center items-center min-h-screen bg-gradient-to-br from-black via-[#0a0a0a] to-[#1a0033] animate-fadeIn">
+      <Background/>
+      <div className="relative w-[400px] p-[5px] bg-[#0d0d0d] rounded-2xl shadow-lg shadow-purple-900 overflow-hidden">
+        <div className="relative z-20 p-10 bg-[#0d0d0dcc] rounded-[15px] backdrop-blur-md">
+          <h2 className="text-center text-neon-blue text-2xl font-bold mb-6 animate-slideDown">
+            Create a New Account
+          </h2>
+
+          {message && (
+            <p className="text-center text-red-500 mb-4">{message}</p>
+          )}
+
+          <form onSubmit={handleSubmit} className="space-y-4">
+            <input
+              type="text"
+              name="name"
+              placeholder="Username"
+              value={formData.name}
+              onChange={handleChange}
+              required
+              className="w-full p-3 bg-[#111] border border-[#333] text-neon-blue rounded-md outline-none transition focus:border-neon-blue"
+            />
+            <input
+              type="email"
+              name="email"
+              placeholder="Email"
+              value={formData.email}
+              onChange={handleChange}
+              required
+              className="w-full p-3 bg-[#111] border border-[#333] text-neon-blue rounded-md outline-none transition focus:border-neon-blue"
+            />
+            <input
+              type="password"
+              name="password"
+              placeholder="Password"
+              value={formData.password}
+              onChange={handleChange}
+              required
+              className="w-full p-3 bg-[#111] border border-[#333] text-neon-blue rounded-md outline-none transition focus:border-neon-blue"
+            />
+            <input
+              type="password"
+              name="confirmPassword"
+              placeholder="Confirm Password"
+              value={formData.confirmPassword}
+              onChange={handleChange}
+              required
+              className="w-full p-3 bg-[#111] border border-[#333] text-neon-blue rounded-md outline-none transition focus:border-neon-blue"
+            />
+
+            <button
+              type="submit"
+              className="w-full py-3 border-2 border-neon-blue text-neon-blue rounded-full font-semibold transition duration-300 hover:bg-neon-blue hover:text-black hover:shadow-neon-blue"
+            >
+              Sign Up
+            </button>
+          </form>
+
+          <p className="text-center text-gray-400 mt-6 text-sm">
+            Already have an account?{" "}
+            <Link
+              to="/login"
+              className="text-neon-blue hover:underline hover:text-neon-blue-light"
+            >
+              Login
+            </Link>
+          </p>
+        </div>
       </div>
     </div>
   );
 }
-
-export default Profile;
