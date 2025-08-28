@@ -1,0 +1,83 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --color-gaming-dark: #0d0d0d;
+    --color-gaming-gray: #1a1a1a;
+    --color-gaming-light-gray: #2c2c2c;
+    --color-neon-purple: #9333ea;
+    --color-neon-pink: #d946ef;
+    --color-neon-cyan: #22d3ee;
+  }
+}
+
+body {
+  background-color: var(--color-gaming-dark);
+  color: #fff;
+  font-family: 'Poppins', sans-serif;
+  min-height: 100vh;
+}
+
+/* --- Existing Animations --- */
+@keyframes navbar-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(-100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-navbar-fade-in {
+  animation: navbar-fade-in 1s ease-out forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { transform: translateY(20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes bounceIn {
+  0% { transform: scale(0); opacity: 0; }
+  60% { transform: scale(1.1); opacity: 1; }
+  80% { transform: scale(0.95); }
+  100% { transform: scale(1); }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 1.5s ease-out;
+}
+.animate-slideUp {
+  animation: slideUp 1s ease-out 0.5s both;
+}
+.animate-bounceIn {
+  animation: bounceIn 0.8s ease-out 1s both;
+}
+
+/* --- New Neon Styles --- */
+.neon-bg-ring {
+  position: absolute;
+  top: -10%;
+  left: -10%;
+  width: 120%;
+  height: 120%;
+  background: conic-gradient(from 0deg, var(--color-neon-cyan), var(--color-neon-pink), var(--color-neon-cyan));
+  animation: spin 5s linear infinite, pulse 3s ease-in-out infinite;
+  z-index: -1;
+  border-radius: 25px;
+  filter: blur(18px);
+}
+
+.mode-btn.active {
+  background: #00f7ff22; /* Using a fixed color here as a fallback */
+  box-shadow: 0 0 10px var(--color-neon-cyan), inset 0 0 10px var(--color-neon-cyan);
+}
