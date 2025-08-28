@@ -25,7 +25,7 @@ function Checkout() {
   // Fetch user's saved addresses from the database
   useEffect(() => {
     if (user?.id) {
-      axios.get(`http://localhost:5000/api/users/${user.id}`)
+      axios.get(`/api/users/${user.id}`)
         .then(res => {
           const userAddresses = res.data.addresses || [];
           setSavedAddresses(userAddresses);
@@ -61,7 +61,7 @@ function Checkout() {
     if (selectedAddress === "new") {
         const newAddress = { street: shippingInfo.street, city: shippingInfo.city, pincode: shippingInfo.pincode };
         try {
-            await axios.put(`http://localhost:5000/api/users/${user.id}`, {
+            await axios.put(`/api/users/${user.id}`, {
                 addresses: [...savedAddresses, newAddress]
             });
         } catch (err) { console.error("Failed to save new address", err); }
@@ -95,7 +95,7 @@ function Checkout() {
 
     try {
         // Step 1: Attempt to place the order
-        await axios.post(`http://localhost:5000/api/orders/${user.id}`, orderDetails);
+        await axios.post(`/api/orders/${user.id}`, orderDetails);
 
         // Step 2: If successful, show success message and navigate away immediately
         alert("Order placed successfully!");

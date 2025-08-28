@@ -25,7 +25,7 @@ function Profile() {
   const handleSave = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.put(`http://localhost:5000/api/users/${user.id}`, {
+      const res = await axios.put(`/api/users/${user.id}`, {
         name: formData.name,
         mobile: formData.mobile,
       });

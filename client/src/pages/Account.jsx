@@ -30,7 +30,7 @@ function Account() {
   useEffect(() => {
     if (user?.id) {
         // Fetch the user's orders to get the total count
-        axios.get(`http://localhost:5000/api/orders/${user.id}`)
+        axios.get(`/api/orders/${user.id}`)
             .then(res => setOrderCount(res.data.length))
             .catch(err => {
                 console.error("Could not fetch orders", err);
@@ -38,7 +38,7 @@ function Account() {
             });
 
         // Fetch the user's profile to get the address count
-        axios.get(`http://localhost:5000/api/users/${user.id}`)
+        axios.get(`/api/users/${user.id}`)
             .then(res => setSavedAddressesCount(res.data.addresses?.length || 0))
             .catch(err => {
                 console.error("Could not fetch addresses", err);

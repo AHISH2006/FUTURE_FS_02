@@ -1,32 +1,41 @@
-// server.js
 const express = require("express");
 const dotenv = require("dotenv");
 const mongoose = require("mongoose");
 const cors = require("cors");
+const path = require("path"); // ✅ 1. Import the 'path' module
 
 dotenv.config();
 const app = express();
 
 // ===== Middleware =====
-app.use(cors()); // Allow frontend to connect
-app.use(express.json()); // Parse JSON body
-app.use(express.urlencoded({ extended: true })); // Parse URL-encoded form data
+app.use(cors());
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
-// ===== Routes =====
+// ===== API Routes =====
 const authRoute = require("./routes/authRoute");
 const userRoute = require("./routes/userRoute");
 const cartRoute = require("./routes/cartRoute");
-const orderRoute = require("./routes/orderRoute"); // ✅ 1. Import the order route
+const orderRoute = require("./routes/orderRoute");
 
 app.use("/api/auth", authRoute);
 app.use("/api/users", userRoute);
 app.use("/api/cart", cartRoute);
-app.use("/api/orders", orderRoute); // ✅ 2. Tell the app to use the order endpoints
+app.use("/api/orders", orderRoute);
 
-// ===== Root Route (Test API) =====
-app.get("/", (req, res) => {
-  res.send("✅ API is running...");
+// ✅ 2. ===== DEPLOYMENT LOGIC =====
+// This tells Express to serve the static files (like CSS, JS, images)
+// from the 'dist' folder inside your 'client' folder.
+const __dirname1 = path.resolve();
+app.use(express.static(path.join(__dirname1, "/client/dist")));
+
+// This is a catch-all route. For any request that doesn't match an API route,
+// it will send back the main index.html file from your frontend.
+// This is crucial for React Router to work correctly on a live server.
+app.get("*", (req, res) => {
+  res.sendFile(path.resolve(__dirname1, "client", "dist", "index.html"));
 });
+
 
 // ===== MongoDB Connection =====
 mongoose

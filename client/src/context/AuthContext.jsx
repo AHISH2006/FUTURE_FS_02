@@ -14,16 +14,26 @@ export const AuthProvider = ({ children }) => {
     }
   }, []);
 
-  const login = async (email, password) => {
+  const login = async (email, password, isRefresh = false) => {
     try {
-      const res = await axios.post("http://localhost:5000/api/auth/login", {
+      // This special logic handles refreshing the user data after a profile update
+      if (isRefresh) {
+        const storedUser = JSON.parse(localStorage.getItem("user"));
+        setUser(storedUser);
+        return true;
+      }
+
+      // ✅ DEPLOYMENT CHANGE: Using relative path for API call
+      const res = await axios.post("/api/auth/login", {
         email,
         password,
       });
+
       const normalizedUser = {
         ...res.data.user,
         id: res.data.user.id || res.data.user._id,
       };
+
       setUser(normalizedUser);
       localStorage.setItem("user", JSON.stringify(normalizedUser));
       return true;
@@ -33,14 +43,10 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
-  // ✅ This is the robust logout function.
   const logout = () => {
-    // 1. Clear the user state within the application.
     setUser(null);
-    // 2. Remove all user-related data from browser storage.
     localStorage.removeItem("user");
     localStorage.removeItem("token");
-    localStorage.removeItem("isLoggedIn");
   };
 
   const authValue = { user, login, logout };

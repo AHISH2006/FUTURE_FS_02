@@ -14,7 +14,7 @@ function ManageAddresses() {
 
   useEffect(() => {
     if (user?.id) {
-      axios.get(`http://localhost:5000/api/users/${user.id}`)
+      axios.get(`/api/users/${user.id}`)
         .then(res => setAddresses(res.data.addresses || []))
         .catch(err => console.error("Could not fetch addresses", err));
     } else {
@@ -39,7 +39,7 @@ function ManageAddresses() {
 
   const handleSaveChanges = async () => {
     try {
-      await axios.put(`http://localhost:5000/api/users/${user.id}`, { addresses });
+      await axios.put(`/api/users/${user.id}`, { addresses });
       setMessage("Addresses saved successfully!");
       setTimeout(() => setMessage(""), 3000);
     } catch (err) {

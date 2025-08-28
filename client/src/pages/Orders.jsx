@@ -73,7 +73,7 @@ function Orders() {
 
   useEffect(() => {
     if (user?.id) {
-      axios.get(`http://localhost:5000/api/orders/${user.id}`)
+      axios.get(`/api/orders/${user.id}`)
         .then(res => { setOrders(res.data); setLoading(false); })
         .catch(err => { console.error("Failed to fetch orders:", err); setLoading(false); });
     } else {
@@ -85,7 +85,7 @@ function Orders() {
     if (!selectedOrder) return;
     try {
         // This now sends a DELETE request, matching your updated backend route
-        await axios.delete(`http://localhost:5000/api/orders/${selectedOrder._id}`);
+        await axios.delete(`/api/orders/${selectedOrder._id}`);
         
         // Update the UI by removing the deleted order from the state
         setOrders(orders.filter(o => o._id !== selectedOrder._id));
