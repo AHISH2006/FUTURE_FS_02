@@ -1,5 +1,66 @@
-// src/data/products.jsx
-// Prices are in INR, and the product list has been expanded with more lower-rated items.
+// ✅ 1. Import all product images at the top of the file
+import img1 from '../assets/1.jpg';
+import img2 from '../assets/2.jpg';
+import img3 from '../assets/3.jpg';
+import img4 from '../assets/4.jpg';
+import img5 from '../assets/5.jpg';
+import img6 from '../assets/6.jpg';
+import img7 from '../assets/7.jpg';
+import img8 from '../assets/8.jpg';
+import img9 from '../assets/9.jpg';
+import img10 from '../assets/10.jpg';
+import img11 from '../assets/11.jpg';
+import img12 from '../assets/12.jpg';
+import img13 from '../assets/13.jpg';
+import img14 from '../assets/14.jpg';
+import img15 from '../assets/15.jpg';
+import img16 from '../assets/16.jpg';
+import img17 from '../assets/17.jpg';
+import img18 from '../assets/18.jpg';
+import img19 from '../assets/19.jpg';
+import img20 from '../assets/20.jpg';
+import img21 from '../assets/21.jpg';
+import img22 from '../assets/22.jpg';
+import img23 from '../assets/23.jpg';
+import img24 from '../assets/24.jpg';
+import img25 from '../assets/25.jpg';
+import img26 from '../assets/26.jpg';
+import img27 from '../assets/27.jpg';
+import img28 from '../assets/28.jpg';
+import img29 from '../assets/29.jpg';
+import img30 from '../assets/30.jpg';
+import img31 from '../assets/31.jpg';
+import img32 from '../assets/32.jpg';
+import img33 from '../assets/33.jpg';
+import img34 from '../assets/34.jpg';
+import img35 from '../assets/35.jpg';
+import img36 from '../assets/36.jpg';
+import img37 from '../assets/37.jpg';
+import img38 from '../assets/38.jpg';
+import img39 from '../assets/39.jpg';
+import img40 from '../assets/40.jpg';
+import img41 from '../assets/41.jpg';
+import img42 from '../assets/42.jpg';
+import img43 from '../assets/43.jpg';
+import img44 from '../assets/44.jpg';
+import img45 from '../assets/45.jpg';
+import img46 from '../assets/46.jpg';
+import img47 from '../assets/47.jpg';
+import img48 from '../assets/48.jpg';
+import img49 from '../assets/49.jpg';
+import img50 from '../assets/50.jpg';
+import img51 from '../assets/51.jpg';
+import img52 from '../assets/52.jpg';
+import img53 from '../assets/53.jpg';
+import img54 from '../assets/54.jpg';
+import img55 from '../assets/55.jpg';
+import img56 from '../assets/56.jpg';
+import img57 from '../assets/57.jpg';
+import img58 from '../assets/58.jpg';
+import img59 from '../assets/59.jpg';
+
+
+// ✅ 2. Use the imported variables in the 'image' property
 const products = [
   // === GPUs ===
   {
@@ -9,7 +70,7 @@ const products = [
     price: 132717,
     rating: 5,
     description: "The ultimate GPU for gamers and creators.",
-    image: "../../src/assets/1.jpg",
+    image: img1,
   },
   {
     id: 2,
@@ -18,7 +79,7 @@ const products = [
     price: 99517,
     rating: 4.8,
     description: "High-end gaming graphics card.",
-    image: "../../src/assets/2.jpg",
+    image: img2,
   },
   {
     id: 3,
@@ -27,7 +88,7 @@ const products = [
     price: 82917,
     rating: 4.7,
     description: "Flagship AMD GPU for high-end gaming.",
-    image: "../../src/assets/3.jpg",
+    image: img3,
   },
   {
     id: 4,
@@ -36,7 +97,7 @@ const products = [
     price: 29050,
     rating: 4.2,
     description: "Mid-range gaming graphics card.",
-    image: "../../src/assets/4.jpg",
+    image: img4,
   },
   {
     id: 12,
@@ -45,7 +106,7 @@ const products = [
     price: 66337,
     rating: 4.6,
     description: "Excellent performance for 1440p gaming.",
-    image: "../../src/assets/5.jpg",
+    image: img5,
   },
   {
     id: 13,
@@ -54,7 +115,7 @@ const products = [
     price: 41417,
     rating: 4.5,
     description: "Great value mainstream GPU from AMD.",
-    image: "../../src/assets/6.jpg",
+    image: img6,
   },
   {
     id: 43,
@@ -63,7 +124,7 @@ const products = [
     price: 7470,
     rating: 3.2,
     description: "Entry-level card for basic display output.",
-    image: "../../src/assets/7.jpg",
+    image: img7,
   },
   {
     id: 54,
@@ -72,7 +133,7 @@ const products = [
     price: 4980,
     rating: 2.6,
     description: "An old card for very light, older games.",
-    image: "../../src/assets/8.jpg",
+    image: img8,
   },
 
   // === CPUs ===
@@ -83,7 +144,7 @@ const products = [
     price: 49717,
     rating: 4.5,
     description: "Powerful 13th Gen Intel processor.",
-    image: "../../src/assets/9.jpg",
+    image: img9,
   },
   {
     id: 6,
@@ -92,7 +153,7 @@ const products = [
     price: 35607,
     rating: 4.4,
     description: "Great performance for gamers.",
-    image: "../../src/assets/10.jpg",
+    image: img10,
   },
   {
     id: 7,
@@ -101,7 +162,7 @@ const products = [
     price: 58017,
     rating: 4.6,
     description: "Top-tier AMD processor.",
-    image: "../../src/assets/11.jpg",
+    image: img11,
   },
   {
     id: 8,
@@ -110,7 +171,7 @@ const products = [
     price: 33117,
     rating: 4.3,
     description: "High-performance AMD CPU for gaming.",
-    image: "../../src/assets/12.jpg",
+    image: img12,
   },
   {
     id: 14,
@@ -119,7 +180,7 @@ const products = [
     price: 25657,
     rating: 4.7,
     description: "The best mid-range gaming CPU.",
-    image: "../../src/assets/13.jpg",
+    image: img13,
   },
   {
     id: 15,
@@ -128,7 +189,7 @@ const products = [
     price: 19007,
     rating: 4.5,
     description: "Affordable and efficient gaming processor.",
-    image: "../../src/assets/14.jpg",
+    image: img14,
   },
   {
     id: 44,
@@ -137,7 +198,7 @@ const products = [
     price: 4150,
     rating: 3.5,
     description: "Budget processor for basic computing tasks.",
-    image: "../../src/assets/15.jpg",
+    image: img15,
   },
   {
     id: 55,
@@ -146,7 +207,7 @@ const products = [
     price: 5810,
     rating: 3.1,
     description: "Entry-level APU with integrated graphics.",
-    image: "../../src/assets/16.jpg",
+    image: img16,
   },
 
   // === RAM ===
@@ -157,7 +218,7 @@ const products = [
     price: 12450,
     rating: 4.0,
     description: "High-speed DDR5 memory.",
-    image: "../../src/assets/17.jpg",
+    image: img17,
   },
   {
     id: 10,
@@ -166,7 +227,7 @@ const products = [
     price: 14110,
     rating: 4.5,
     description: "RGB DDR4 memory with great performance.",
-    image: "../../src/assets/18.jpg",
+    image: img18,
   },
   {
     id: 11,
@@ -175,7 +236,7 @@ const products = [
     price: 6640,
     rating: 3.9,
     description: "Reliable DDR4 memory.",
-    image: "../../src/assets/19.jpg",
+    image: img19,
   },
   {
     id: 16,
@@ -184,7 +245,7 @@ const products = [
     price: 8290,
     rating: 4.3,
     description: "No-fuss, high-performance DDR5 RAM.",
-    image: "../../src/assets/20.jpg",
+    image: img20,
   },
   {
     id: 45,
@@ -193,7 +254,7 @@ const products = [
     price: 2490,
     rating: 3.1,
     description: "Basic memory for office and home PCs.",
-    image: "../../src/assets/21.jpg",
+    image: img21,
   },
   {
     id: 56,
@@ -202,7 +263,7 @@ const products = [
     price: 1245,
     rating: 2.2,
     description: "Older memory for legacy systems.",
-    image: "../../src/assets/22.jpg",
+    image: img22,
   },
 
   // === Storage ===
@@ -213,7 +274,7 @@ const products = [
     price: 9960,
     rating: 4.7,
     description: "Blazing fast NVMe SSD.",
-    image: "../../src/assets/23.jpg",
+    image: img23,
   },
   {
     id: 18,
@@ -222,7 +283,7 @@ const products = [
     price: 14940,
     rating: 4.8,
     description: "High-performance NVMe storage with huge capacity.",
-    image: "../../src/assets/24.jpg",
+    image: img24,
   },
   {
     id: 19,
@@ -231,7 +292,7 @@ const products = [
     price: 7470,
     rating: 4.3,
     description: "Reliable storage for large files and games.",
-    image: "../../src/assets/25.jpg",
+    image: img25,
   },
   {
     id: 20,
@@ -240,7 +301,7 @@ const products = [
     price: 7885,
     rating: 4.5,
     description: "Affordable SATA SSD for fast boot times.",
-    image: "../../src/assets/26.jpg",
+    image: img26,
   },
   {
     id: 46,
@@ -249,7 +310,7 @@ const products = [
     price: 2075,
     rating: 2.8,
     description: "A basic SSD for operating system installation.",
-    image: "../../src/assets/27.jpg",
+    image: img27,
   },
   {
     id: 57,
@@ -258,7 +319,7 @@ const products = [
     price: 830,
     rating: 1.9,
     description: "Slow, second-hand storage for non-critical data.",
-    image: "../../src/assets/28.jpg",
+    image: img28,
   },
 
   // === Motherboards ===
@@ -269,7 +330,7 @@ const products = [
     price: 53950,
     rating: 4.8,
     description: "Premium motherboard for enthusiasts.",
-    image: "../../src/assets/29.jpg",
+    image: img29,
   },
   {
     id: 22,
@@ -278,7 +339,7 @@ const products = [
     price: 14940,
     rating: 4.4,
     description: "Solid mid-range AMD motherboard.",
-    image: "../../src/assets/30.jpg",
+    image: img30,
   },
   {
     id: 23,
@@ -287,7 +348,7 @@ const products = [
     price: 18260,
     rating: 4.6,
     description: "Feature-packed motherboard for AMD Ryzen 7000 series.",
-    image: "../../src/assets/31.jpg",
+    image: img31,
   },
   {
     id: 24,
@@ -296,7 +357,7 @@ const products = [
     price: 24900,
     rating: 4.5,
     description: "Great value Z790 motherboard with WiFi.",
-    image: "../../src/assets/32.jpg",
+    image: img32,
   },
   {
     id: 47,
@@ -305,7 +366,7 @@ const products = [
     price: 5810,
     rating: 3.4,
     description: "A no-frills motherboard for budget Intel builds.",
-    image: "../../src/assets/33.jpg",
+    image: img33,
   },
 
   // === Monitors ===
@@ -316,7 +377,7 @@ const products = [
     price: 24817,
     rating: 4.5,
     description: "High refresh rate 1440p gaming monitor.",
-    image: "../../src/assets/34.jpg",
+    image: img34,
   },
   {
     id: 26,
@@ -325,7 +386,7 @@ const products = [
     price: 116117,
     rating: 4.9,
     description: "Super ultrawide 49-inch curved monitor.",
-    image: "../../src/assets/35.jpg",
+    image: img35,
   },
   {
     id: 27,
@@ -334,7 +395,7 @@ const products = [
     price: 16580,
     rating: 4.4,
     description: "Fast and affordable esports monitor.",
-    image: "../../src/assets/36.jpg",
+    image: img36,
   },
   {
     id: 28,
@@ -343,7 +404,7 @@ const products = [
     price: 66340,
     rating: 4.7,
     description: "Stunning 4K gaming monitor with great colors.",
-    image: "../../src/assets/37.jpg",
+    image: img37,
   },
   {
     id: 48,
@@ -352,7 +413,7 @@ const products = [
     price: 7470,
     rating: 3.6,
     description: "A simple 1080p monitor for work or secondary display.",
-    image: "../../src/assets/38.jpg",
+    image: img38,
   },
 
   // === PSU ===
@@ -363,7 +424,7 @@ const products = [
     price: 11620,
     rating: 4.8,
     description: "850W fully modular PSU with 80+ Gold certification.",
-    image: "../../src/assets/39.jpg",
+    image: img39,
   },
   {
     id: 30,
@@ -372,7 +433,7 @@ const products = [
     price: 10790,
     rating: 4.7,
     description: "750W fully modular PSU.",
-    image: "../../src/assets/40.jpg",
+    image: img40,
   },
   {
     id: 49,
@@ -381,7 +442,7 @@ const products = [
     price: 2490,
     rating: 2.9,
     description: "Entry-level power supply for low-power systems.",
-    image: "../../src/assets/41.jpg",
+    image: img41,
   },
 
   // === Cases ===
@@ -392,7 +453,7 @@ const products = [
     price: 8300,
     rating: 4.3,
     description: "Minimalistic ATX mid-tower case with great airflow.",
-    image: "../../src/assets/42.jpg",
+    image: img42,
   },
   {
     id: 32,
@@ -401,7 +462,7 @@ const products = [
     price: 13280,
     rating: 4.9,
     description: "Extremely popular and versatile case for builders.",
-    image: "../../src/assets/43.jpg",
+    image: img43,
   },
   {
     id: 50,
@@ -410,7 +471,7 @@ const products = [
     price: 2900,
     rating: 2.5,
     description: "A very basic case for non-gaming computers.",
-    image: "../../src/assets/44.jpg",
+    image: img44,
   },
 
   // === Cooling ===
@@ -421,7 +482,7 @@ const products = [
     price: 9130,
     rating: 4.9,
     description: "Legendary air cooler for CPUs.",
-    image: "../../src/assets/45.jpg",
+    image: img45,
   },
   {
     id: 34,
@@ -430,7 +491,7 @@ const products = [
     price: 14110,
     rating: 4.8,
     description: "360mm liquid cooler with RGB.",
-    image: "../../src/assets/46.jpg",
+    image: img46,
   },
   {
     id: 51,
@@ -439,7 +500,7 @@ const products = [
     price: 1245,
     rating: 3.3,
     description: "A simple cooler, better than stock.",
-    image: "../../src/assets/47.jpg",
+    image: img47,
   },
 
   // === Peripherals ===
@@ -450,7 +511,7 @@ const products = [
     price: 10790,
     rating: 4.7,
     description: "Ultralight wireless gaming mouse.",
-    image: "../../src/assets/48.jpg",
+    image: img48,
   },
   {
     id: 36,
@@ -459,7 +520,7 @@ const products = [
     price: 13280,
     rating: 4.6,
     description: "Optical mechanical keyboard for fast response.",
-    image: "../../src/assets/49.jpg",
+    image: img49,
   },
   {
     id: 37,
@@ -468,7 +529,7 @@ const products = [
     price: 12450,
     rating: 4.5,
     description: "Comfortable wireless headset with immersive sound.",
-    image: "../../src/assets/50.jpg",
+    image: img50,
   },
   {
     id: 38,
@@ -477,7 +538,7 @@ const products = [
     price: 2490,
     rating: 4.8,
     description: "Extra thick cloth mousepad for maximum control.",
-    image: "../../src/assets/51.jpg",
+    image: img51,
   },
   {
     id: 52,
@@ -486,7 +547,7 @@ const products = [
     price: 1660,
     rating: 2.7,
     description: "A basic wired keyboard and mouse set.",
-    image: "../../src/assets/52.jpg",
+    image: img52,
   },
   {
     id: 58,
@@ -495,7 +556,7 @@ const products = [
     price: 830,
     rating: 2.1,
     description: "Basic speakers for system sounds and casual listening.",
-    image: "../../src/assets/53.jpg",
+    image: img53,
   },
 
   // === Accessories ===
@@ -506,7 +567,7 @@ const products = [
     price: 12450,
     rating: 4.7,
     description: "Customizable control pad for streamers.",
-    image: "../../src/assets/54.jpg",
+    image: img54,
   },
   {
     id: 40,
@@ -515,7 +576,7 @@ const products = [
     price: 9960,
     rating: 4.6,
     description: "Popular USB microphone for streaming and recording.",
-    image: "../../src/assets/55.jpg",
+    image: img55,
   },
   {
     id: 41,
@@ -524,7 +585,7 @@ const products = [
     price: 8290,
     rating: 4.4,
     description: "High quality 1080p streaming webcam.",
-    image: "../../src/assets/56.jpg",
+    image: img56,
   },
   {
     id: 42,
@@ -533,7 +594,7 @@ const products = [
     price: 14940,
     rating: 4.6,
     description: "Pro-level customizable controller for PC & console.",
-    image: "../../src/assets/57.jpg",
+    image: img57,
   },
   {
     id: 53,
@@ -542,7 +603,7 @@ const products = [
     price: 499,
     rating: 3.0,
     description: "Expand your computer's USB ports.",
-    image: "../../src/assets/58.jpg",
+    image: img58,
   },
   {
     id: 59,
@@ -551,7 +612,7 @@ const products = [
     price: 1245,
     rating: 2.4,
     description: "A simple webcam for video calls.",
-    image: "../../src/assets/59.jpg",
+    image: img59,
   },
 ];
 

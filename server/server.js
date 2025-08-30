@@ -2,7 +2,7 @@ const express = require("express");
 const dotenv = require("dotenv");
 const mongoose = require("mongoose");
 const cors = require("cors");
-const path = require("path"); // ✅ 1. Import the 'path' module
+const path = require("path"); // Import the 'path' module
 
 dotenv.config();
 const app = express();
@@ -23,37 +23,26 @@ app.use("/api/users", userRoute);
 app.use("/api/cart", cartRoute);
 app.use("/api/orders", orderRoute);
 
-// ✅ 2. ===== DEPLOYMENT LOGIC =====
-// This tells Express to serve the static files (like CSS, JS, images)
-// from the 'dist' folder inside your 'client' folder.
-const __dirname1 = path.resolve();
-
-// Serve static files from client/dist (one level up)
-app.use(express.static(path.join(__dirname1, "../client/dist")));
-
-// Catch-all route (React Router)
-app.get("*", (req, res) => {
-  res.sendFile(path.resolve(__dirname1, "../client/dist/index.html"));
-});
+// ===== DEPLOYMENT LOGIC =====
+// This code tells Express where to find the frontend's static files.
+// It navigates up one directory from 'server' to the project root,
+// then into 'client/dist'. This is the correct path.
+app.use(express.static(path.join(__dirname, "../client/dist")));
 
 // This is a catch-all route. For any request that doesn't match an API route,
-// it will send back the main index.html file from your frontend.
-// This is crucial for React Router to work correctly on a live server.
+// it sends back the main index.html file from the frontend.
 app.get("*", (req, res) => {
-  res.sendFile(path.resolve(__dirname1, "client", "dist", "index.html"));
+  res.sendFile(path.resolve(__dirname, "../client/dist", "index.html"));
 });
 
 
 // ===== MongoDB Connection =====
 mongoose
-  .connect(process.env.MONGO_URI, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  })
+  .connect(process.env.MONGO_URI)
   .then(() => console.log("✅ MongoDB Connected"))
   .catch((err) => {
     console.error("❌ MongoDB Connection Error:", err.message);
-    process.exit(1);
+    process.exit(1); // Exit process with failure
   });
 
 // ===== Start Server =====
